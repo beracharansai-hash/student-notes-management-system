@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Login | SNM</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            min-height: 100vh;
+
+            font-family: 'Inter', sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 80% 10%,
+                    #243d91,
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 10% 90%,
+                    #302061,
+                    transparent 35%
+                ),
+                #080d1a;
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+        }
+
+        .orb {
+            position: fixed;
+
+            width: 250px;
+            height: 250px;
+
+            border-radius: 50%;
+
+            background: #4f7cff;
+
+            filter: blur(120px);
+
+            opacity: .12;
+
+            top: -100px;
+            left: 30%;
+        }
+
+        .wrapper {
+            width: 950px;
+            max-width: 94%;
+
+            min-height: 560px;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            background: rgba(16,23,40,.82);
+
+            border: 1px solid rgba(255,255,255,.09);
+
+            border-radius: 25px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 30px 90px rgba(0,0,0,.45);
+
+            backdrop-filter: blur(25px);
+        }
+
+        .left {
+            padding: 55px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(79,124,255,.16),
+                    rgba(109,93,252,.04)
+                );
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .logo {
+            width: 55px;
+            height: 55px;
+
+            border-radius: 16px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4f7cff,
+                    #7658ff
+                );
+
+            font-weight: 800;
+
+            margin-bottom: 30px;
+
+            box-shadow:
+                0 15px 35px rgba(79,124,255,.28);
+        }
+
+        .left h1 {
+            font-size: 38px;
+
+            line-height: 1.12;
+
+            letter-spacing: -1.5px;
+
+            margin-bottom: 18px;
+        }
+
+        .left h1 span {
+            color: #6d8cff;
+        }
+
+        .left p {
+            color: #8f9bb3;
+
+            line-height: 1.7;
+
+            font-size: 14px;
+
+            max-width: 380px;
+        }
+
+        .feature {
+            margin-top: 35px;
+
+            display: flex;
+            gap: 12px;
+
+            color: #aab4c9;
+
+            font-size: 13px;
+        }
+
+        .feature-dot {
+            width: 7px;
+            height: 7px;
+
+            margin-top: 5px;
+
+            border-radius: 50%;
+
+            background: #4f7cff;
+
+            box-shadow:
+                0 0 12px #4f7cff;
+        }
+
+        .right {
+            padding: 55px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .right h2 {
+            font-size: 27px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #7e899f;
+            font-size: 13px;
+
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+
+            color: #b7c0d2;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            margin-bottom: 8px;
+        }
+
+        .input {
+            width: 100%;
+
+            padding: 14px 15px;
+
+            margin-bottom: 18px;
+
+            background: rgba(255,255,255,.045);
+
+            border: 1px solid rgba(255,255,255,.09);
+
+            border-radius: 10px;
+
+            color: white;
+
+            font-family: inherit;
+
+            transition: .25s ease;
+        }
+
+        .input::placeholder {
+            color: #566176;
+        }
+
+        .input:focus {
+            outline: none;
+
+            border-color: #4f7cff;
+
+            background: rgba(79,124,255,.06);
+
+            box-shadow:
+                0 0 0 4px rgba(79,124,255,.08);
+        }
+
+        .login-btn {
+            width: 100%;
+
+            border: none;
+
+            padding: 14px;
+
+            border-radius: 10px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4f7cff,
+                    #7058ff
+                );
+
+            font-family: inherit;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: .3s ease;
+
+            box-shadow:
+                0 10px 25px rgba(79,124,255,.18);
+        }
+
+        .login-btn:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 15px 35px rgba(79,124,255,.28);
+        }
+
+        .links {
+            text-align: center;
+
+            margin-top: 22px;
+
+            font-size: 12px;
+        }
+
+        .links a {
+            color: #718fff;
+
+            text-decoration: none;
+
+            transition: .2s;
+        }
+
+        .links a:hover {
+            color: white;
+        }
+
+        @media(max-width:700px) {
+
+            .wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .left {
+                display: none;
+            }
+
+            .right {
+                padding: 40px 28px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="orb"></div>
+
+<div class="wrapper">
+
+    <div class="left">
+
+        <div class="logo">
+            SN
+        </div>
+
+        <h1>
+            Your learning.<br>
+            <span>Your workspace.</span>
+        </h1>
+
+        <p>
+            Student Notes Management System gives you
+            a focused space to create, organize, search
+            and manage your academic notes.
+        </p>
+
+        <div class="feature">
+            <div class="feature-dot"></div>
+            <span>Organize your study material</span>
+        </div>
+
+        <div class="feature">
+            <div class="feature-dot"></div>
+            <span>Manage notes and uploaded files</span>
+        </div>
+
+        <div class="feature">
+            <div class="feature-dot"></div>
+            <span>Find your content quickly</span>
+        </div>
+
+    </div>
+
+
+    <div class="right">
+
+        <h2>
+            Welcome back
+        </h2>
+
+        <div class="subtitle">
+            Sign in to continue to your workspace
+        </div>
+
+        <form method="POST">
+
+            <label>
+                EMAIL ADDRESS
+            </label>
+
+            <input
+                class="input"
+                type="email"
+                name="email"
+                placeholder="you@example.com"
+                required
+            >
+
+            <label>
+                PASSWORD
+            </label>
+
+            <input
+                class="input"
+                type="password"
+                name="password"
+                placeholder="Enter your password"
+                required
+            >
+
+            <button
+                class="login-btn"
+                type="submit"
+            >
+                Sign in
+            </button>
+
+        </form>
+
+        <div class="links">
+
+            <a href="{{ url_for('forgot_password') }}">
+                Forgot password?
+            </a>
+
+            <br><br>
+
+            <span style="color:#68748a;">
+                Don't have an account?
+            </span>
+
+            <a href="{{ url_for('register') }}">
+                Create one
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

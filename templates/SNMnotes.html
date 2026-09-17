@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>My Notes | SNM</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    font-family: 'Inter', sans-serif;
+
+    background: #080d1a;
+
+    color: white;
+}
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    width: 450px;
+    height: 450px;
+
+    background: #4f7cff;
+
+    filter: blur(180px);
+
+    opacity: .09;
+
+    top: -150px;
+    right: -100px;
+
+    z-index: -1;
+}
+
+.header {
+    height: 72px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 0 35px;
+
+    background:
+        rgba(8,13,26,.8);
+
+    backdrop-filter: blur(20px);
+}
+
+.brand {
+    font-weight: 800;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.logo {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f7cff,
+            #7258ff
+        );
+}
+
+.dashboard {
+    color: #8c98ae;
+
+    text-decoration: none;
+
+    font-size: 13px;
+}
+
+.dashboard:hover {
+    color: white;
+}
+
+.container {
+    width: 950px;
+
+    max-width: 94%;
+
+    margin: 50px auto;
+}
+
+.title-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.title-row h1 {
+    font-size: 30px;
+
+    letter-spacing: -1px;
+}
+
+.new-btn {
+    padding: 11px 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f7cff,
+            #7258ff
+        );
+
+    color: white;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    transition: .3s;
+}
+
+.new-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px rgba(79,124,255,.25);
+}
+
+.notes {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px;
+}
+
+.note {
+    background:
+        rgba(16,23,40,.76);
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    border-radius: 17px;
+
+    padding: 24px;
+
+    min-height: 220px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.note:hover {
+    transform: translateY(-6px);
+
+    border-color:
+        rgba(79,124,255,.28);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.25);
+}
+
+.note-label {
+    color: #6076b9;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 14px;
+}
+
+.note h2 {
+    font-size: 18px;
+
+    margin-bottom: 12px;
+
+    overflow-wrap: anywhere;
+}
+
+.content {
+    color: #8490a5;
+
+    font-size: 13px;
+
+    line-height: 1.65;
+
+    white-space: pre-wrap;
+
+    display: -webkit-box;
+
+    -webkit-line-clamp: 4;
+
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+
+    flex: 1;
+}
+
+.date {
+    color: #4f5b72;
+
+    font-size: 10px;
+
+    margin-top: 17px;
+}
+
+.actions {
+    display: flex;
+
+    gap: 7px;
+
+    margin-top: 18px;
+}
+
+.btn {
+    padding: 8px 12px;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    color: #aeb8ca;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid rgba(255,255,255,.07);
+
+    font-size: 11px;
+
+    transition: .25s;
+
+    cursor: pointer;
+}
+
+.btn:hover {
+    color: white;
+
+    background:
+        rgba(79,124,255,.14);
+
+    border-color:
+        rgba(79,124,255,.25);
+}
+
+.delete:hover {
+    background: rgba(255,60,90,.12);
+
+    color: #ff7187;
+
+    border-color:
+        rgba(255,60,90,.2);
+}
+
+.empty {
+    padding: 70px 20px;
+
+    text-align: center;
+
+    background:
+        rgba(16,23,40,.7);
+
+    border:
+        1px dashed rgba(255,255,255,.1);
+
+    border-radius: 18px;
+}
+
+.empty h2 {
+    margin-bottom: 10px;
+}
+
+.empty p {
+    color: #718096;
+
+    font-size: 13px;
+
+    margin-bottom: 20px;
+}
+
+@media(max-width:700px) {
+
+    .notes {
+        grid-template-columns: 1fr;
+    }
+
+    .title-row {
+        align-items: flex-start;
+
+        gap: 15px;
+
+        flex-direction: column;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="brand">
+
+        <div class="logo">
+            SN
+        </div>
+
+        My Notes
+
+    </div>
+
+    <a
+        href="{{ url_for('dashboard') }}"
+        class="dashboard"
+    >
+        ← Dashboard
+    </a>
+
+</header>
+
+
+<div class="container">
+
+    <div class="title-row">
+
+        <div>
+
+            <h1>
+                Your Notes
+            </h1>
+
+        </div>
+
+        <a
+            href="{{ url_for('add_note') }}"
+            class="new-btn"
+        >
+            + New Note
+        </a>
+
+    </div>
+
+
+    {% if notes %}
+
+    <div class="notes">
+
+        {% for note in notes %}
+
+        <div class="note">
+
+            <div class="note-label">
+                Note
+            </div>
+
+            <h2>
+                {{ note[2] }}
+            </h2>
+
+            <div class="content">
+                {{ note[3] }}
+            </div>
+
+            <div class="date">
+                Created {{ note[4] }}
+            </div>
+
+            <div class="actions">
+
+                <a
+                    href="{{ url_for('view_single_note', note_id=note[0]) }}"
+                    class="btn"
+                >
+                    Open
+                </a>
+
+                <a
+                    href="{{ url_for('update_note', note_id=note[0]) }}"
+                    class="btn"
+                >
+                    Edit
+                </a>
+
+                <form
+                    method="POST"
+                    action="{{ url_for('delete_note', note_id=note[0]) }}"
+                    style="display:inline;"
+                >
+
+                    <button
+                        type="submit"
+                        class="btn delete"
+                        onclick="return confirm('Delete this note?');"
+                    >
+                        Delete
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <div class="empty">
+
+        <h2>
+            Nothing here yet
+        </h2>
+
+        <p>
+            Create your first note and start building your study workspace.
+        </p>
+
+        <a
+            href="{{ url_for('add_note') }}"
+            class="new-btn"
+        >
+            Create First Note
+        </a>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+
+</html>

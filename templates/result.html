@@ -1,0 +1,40 @@
+{#{% if marks >= 90 %}#}
+{##}
+{#    <h2>Grade A+</h2>#}
+{##}
+{#{% elif marks >= 75 %}#}
+{##}
+{#    <h2>Grade A</h2>#}
+{##}
+{#{% elif marks >= 60 %}#}
+{##}
+{#    <h2>Grade B</h2>#}
+{##}
+{#{% elif marks >= 50 %}#}
+{##}
+{#    <h2>Grade: C</h2>#}
+{##}
+{#{% else %}#}
+{##}
+{#    <h2>Fail</h2>#}
+{##}
+{#{% endif %}#}
+
+
+{% if age >= 23 %}
+
+    <h2>Adult</h2>
+
+{% elif age >= 13 %}
+
+    <h2>Teenager</h2>
+
+{% elif age >= 5 %}
+
+    <h2>Child</h2>
+
+{% else %}
+
+    <h2>young child</h2>
+
+{% endif %}

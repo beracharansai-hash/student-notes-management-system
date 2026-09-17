@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>New Note | SNM</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    font-family: 'Inter', sans-serif;
+
+    background: #080d1a;
+
+    color: white;
+}
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    width: 500px;
+    height: 500px;
+
+    background: #4f7cff;
+
+    filter: blur(180px);
+
+    opacity: .10;
+
+    top: -200px;
+    right: -100px;
+}
+
+.header {
+    height: 70px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 35px;
+
+    background:
+        rgba(8,13,26,.82);
+
+    backdrop-filter: blur(20px);
+}
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    font-weight: 800;
+}
+
+.logo {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f7cff,
+            #7258ff
+        );
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 13px;
+}
+
+.back {
+    color: #8d99af;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    transition: .2s;
+}
+
+.back:hover {
+    color: white;
+}
+
+.wrapper {
+    width: 850px;
+
+    max-width: 92%;
+
+    margin: 55px auto;
+}
+
+.page-title {
+    margin-bottom: 28px;
+}
+
+.page-title h1 {
+    font-size: 30px;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 7px;
+}
+
+.page-title p {
+    color: #7e8aa0;
+
+    font-size: 13px;
+}
+
+.editor {
+    background:
+        rgba(16,23,40,.78);
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.3);
+
+    backdrop-filter: blur(20px);
+}
+
+.editor-top {
+    height: 50px;
+
+    padding: 0 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.07);
+
+    color: #6f7b91;
+
+    font-size: 12px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #4f7cff;
+
+    margin-right: 9px;
+}
+
+input,
+textarea {
+    width: 100%;
+
+    background: transparent;
+
+    border: none;
+
+    outline: none;
+
+    color: white;
+
+    font-family: inherit;
+}
+
+input {
+    font-size: 25px;
+
+    font-weight: 700;
+
+    padding: 30px 32px 15px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #414d64;
+}
+
+textarea {
+    min-height: 390px;
+
+    resize: vertical;
+
+    padding: 10px 32px 30px;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+.editor-bottom {
+    padding: 17px 25px;
+
+    border-top:
+        1px solid rgba(255,255,255,.07);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.tip {
+    color: #59657c;
+
+    font-size: 11px;
+}
+
+button {
+    border: none;
+
+    padding: 12px 23px;
+
+    border-radius: 9px;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-weight: 700;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f7cff,
+            #7258ff
+        );
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px rgba(79,124,255,.25);
+}
+
+.links {
+    margin-top: 22px;
+
+    display: flex;
+
+    gap: 20px;
+}
+
+.links a {
+    color: #718fff;
+
+    text-decoration: none;
+
+    font-size: 12px;
+}
+
+.links a:hover {
+    color: white;
+}
+
+@media(max-width:600px) {
+
+    .header {
+        padding: 0 18px;
+    }
+
+    .wrapper {
+        margin-top: 30px;
+    }
+
+    input {
+        font-size: 21px;
+        padding: 25px 20px 10px;
+    }
+
+    textarea {
+        padding: 10px 20px 25px;
+    }
+
+    .editor-bottom {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+
+    button {
+        width: 100%;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="brand">
+
+        <div class="logo">
+            SN
+        </div>
+
+        Student Notes Management
+
+    </div>
+
+    <a
+        href="{{ url_for('dashboard') }}"
+        class="back"
+    >
+        ← Dashboard
+    </a>
+
+</header>
+
+
+<main class="wrapper">
+
+    <div class="page-title">
+
+        <h1>
+            Create a new note
+        </h1>
+
+        <p>
+            Capture your ideas, lessons and study material.
+        </p>
+
+    </div>
+
+
+    <form
+        method="POST"
+        class="editor"
+    >
+
+        <div class="editor-top">
+
+            <div class="dot"></div>
+
+            New document
+
+        </div>
+
+
+        <input
+            type="text"
+            name="title"
+            placeholder="Give your note a title..."
+            required
+        >
+
+
+        <textarea
+            name="content"
+            placeholder="Start writing your note here..."
+            required
+        ></textarea>
+
+
+        <div class="editor-bottom">
+
+            <span class="tip">
+                Your note will be saved to your workspace.
+            </span>
+
+            <button type="submit">
+                Save Note
+            </button>
+
+        </div>
+
+    </form>
+
+
+    <div class="links">
+
+        <a href="{{ url_for('view_notes') }}">
+            View all notes →
+        </a>
+
+        <a href="{{ url_for('dashboard') }}">
+            Dashboard →
+        </a>
+
+    </div>
+
+</main>
+
+</body>
+
+</html>
